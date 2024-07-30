@@ -2,20 +2,30 @@
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddDependencyInjection(this IServiceCollection services, WebApplicationBuilder builder)
+    public static IServiceCollection AddDependencyInjection(
+        this IServiceCollection services,
+        WebApplicationBuilder builder
+    )
     {
-        return services.AddDbContextService(builder)
+        return services
+            .AddDbContextService(builder)
             .AddDataAccessService()
             .AddBusinessLogicService()
             .AddHangfireService(builder);
     }
 
-    private static IServiceCollection AddDbContextService(this IServiceCollection services, WebApplicationBuilder builder)
+    private static IServiceCollection AddDbContextService(
+        this IServiceCollection services,
+        WebApplicationBuilder builder
+    )
     {
-        return builder.Services.AddDbContext<AppDbContext>(opt =>
-        {
-            opt.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection"));
-        }, ServiceLifetime.Transient);
+        return builder.Services.AddDbContext<AppDbContext>(
+            opt =>
+            {
+                opt.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection"));
+            },
+            ServiceLifetime.Transient
+        );
     }
 
     private static IServiceCollection AddDataAccessService(this IServiceCollection services)
