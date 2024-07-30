@@ -21,12 +21,7 @@ namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Features.Setup
             try
             {
                 string sixDigitNumber = GetSixRandomNumbers();
-                var model = new TblSetup()
-                {
-                    SetupCode = sixDigitNumber,
-                    SetupId = Ulid.NewUlid().ToString(),
-                    IsExpired = false
-                };
+                var model = GetTblSetup(sixDigitNumber);
 
                 await _context.TblSetups.AddAsync(model);
                 await _context.SaveChangesAsync();
@@ -48,6 +43,16 @@ namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Features.Setup
             string sixDigitNumber = randNum.ToString("D6");
 
             return sixDigitNumber;
+        }
+
+        private TblSetup GetTblSetup(string sixDigitNumber)
+        {
+            return new TblSetup()
+            {
+                SetupCode = sixDigitNumber,
+                SetupId = Ulid.NewUlid().ToString(),
+                IsExpired = false
+            };
         }
     }
 }

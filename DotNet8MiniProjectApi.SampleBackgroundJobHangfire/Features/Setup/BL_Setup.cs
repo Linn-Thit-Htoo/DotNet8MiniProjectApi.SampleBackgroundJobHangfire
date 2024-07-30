@@ -12,9 +12,9 @@ namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Features.Setup
             _dL_Setup = dL_Setup;
         }
 
-        public Result<SetupResponseModel> CreateSetup()
+        public async Task<Result<SetupResponseModel>> CreateSetupAsync()
         {
-            return _dL_Setup.CreateSetup();
+            return await _dL_Setup.CreateSetup();
         }
     }
 }

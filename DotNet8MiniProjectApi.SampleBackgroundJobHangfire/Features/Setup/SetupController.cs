@@ -14,10 +14,10 @@ namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Features.Setup
             _bL_Setup = bL_Setup;
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        [HttpPost]
+        public async Task<IActionResult> CreateSetup()
         {
-            var result = _bL_Setup.CreateSetup();
+            var result = await _bL_Setup.CreateSetupAsync();
             return Ok(result);
         }
     }
