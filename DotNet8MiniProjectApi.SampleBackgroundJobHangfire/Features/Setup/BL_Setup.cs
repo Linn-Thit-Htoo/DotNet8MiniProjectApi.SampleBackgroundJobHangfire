@@ -1,7 +1,4 @@
-﻿using DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Models.Setup;
-using DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Models;
-
-namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Features.Setup
+﻿namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Features.Setup
 {
     public class BL_Setup
     {

@@ -1,6 +1,4 @@
 ﻿using DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Db.AppDbContexts;
-using DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Models;
-using DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Models.Setup;
 using Hangfire;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.Text;
