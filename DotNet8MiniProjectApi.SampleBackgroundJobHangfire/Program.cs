@@ -1,4 +1,5 @@
 using DotNet8MiniProjectApi.SampleBackgroundJobHangfire;
+using Hangfire;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseHangfireDashboard();
 
 app.UseAuthorization();
 

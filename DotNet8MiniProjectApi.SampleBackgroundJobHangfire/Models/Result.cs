@@ -21,5 +21,8 @@ namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Models
 
         public static Result<T> FailureResult(Exception ex)
             => new Result<T>() { Message = ex.ToString(), StatusCode = EnumStatusCode.InternalServerError, IsSuccess = false };
+
+        public static Result<T> NotFoundResult(string message = "No Data Found.")
+            => new Result<T> { Message = message, IsSuccess = false, StatusCode = EnumStatusCode.NotFound };
     }
 }
