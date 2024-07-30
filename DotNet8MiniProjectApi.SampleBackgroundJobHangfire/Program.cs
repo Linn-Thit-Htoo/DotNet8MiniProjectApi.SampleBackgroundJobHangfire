@@ -1,5 +1,4 @@
 using DotNet8MiniProjectApi.SampleBackgroundJobHangfire;
-using Hangfire;
 
 var builder = WebApplication.CreateBuilder(args);
 

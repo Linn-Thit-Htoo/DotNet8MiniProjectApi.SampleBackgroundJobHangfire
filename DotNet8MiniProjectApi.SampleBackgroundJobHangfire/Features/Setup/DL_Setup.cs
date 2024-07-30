@@ -1,89 +1,88 @@
-﻿using DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Db.AppDbContexts;
-using Hangfire;
-using Microsoft.AspNetCore.Http.HttpResults;
-using System.Text;
+﻿namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Features.Setup;
 
-namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Features.Setup
+public class DL_Setup
 {
-    public class DL_Setup
+    private readonly AppDbContext _context;
+
+    public DL_Setup(AppDbContext context)
     {
-        private readonly AppDbContext _context;
+        _context = context;
+    }
 
-        public DL_Setup(AppDbContext context)
+    public async Task<Result<CreateSetupResponseModel>> CreateSetup()
+    {
+        Result<CreateSetupResponseModel> responseModel;
+        var transaction = await _context.Database.BeginTransactionAsync();
+
+        try
         {
-            _context = context;
+            string sixDigitNumber = GetSixRandomNumbers();
+            var model = GetTblSetup(sixDigitNumber);
+
+            await _context.TblSetups.AddAsync(model);
+            await _context.SaveChangesAsync();
+
+            responseModel = Result<CreateSetupResponseModel>.SuccessResult(
+                new CreateSetupResponseModel { Code = sixDigitNumber }
+            );
+            BackgroundJob.Schedule<DL_Setup>(
+                x => x.ExpireCode(model.SetupId),
+                TimeSpan.FromMinutes(1)
+            );
+            await transaction.CommitAsync();
+        }
+        catch (Exception ex)
+        {
+            await transaction.RollbackAsync();
+            responseModel = Result<CreateSetupResponseModel>.FailureResult(ex);
         }
 
-        public async Task<Result<CreateSetupResponseModel>> CreateSetup()
+        return responseModel;
+    }
+
+    public async Task<Result<SetupResponseModel>> ExpireCode(string id)
+    {
+        Result<SetupResponseModel> responseModel;
+        try
         {
-            Result<CreateSetupResponseModel> responseModel;
-            var transaction = await _context.Database.BeginTransactionAsync();
-
-            try
+            var item = await _context.TblSetups.FindAsync(id);
+            if (item is null)
             {
-                string sixDigitNumber = GetSixRandomNumbers();
-                var model = GetTblSetup(sixDigitNumber);
-
-                await _context.TblSetups.AddAsync(model);
-                await _context.SaveChangesAsync();
-
-                responseModel = Result<CreateSetupResponseModel>.SuccessResult(new CreateSetupResponseModel { Code = sixDigitNumber });
-                BackgroundJob.Schedule<DL_Setup>(x => x.ExpireCode(model.SetupId), TimeSpan.FromMinutes(1));
-                await transaction.CommitAsync();
-            }
-            catch (Exception ex)
-            {
-                await transaction.RollbackAsync();
-                responseModel = Result<CreateSetupResponseModel>.FailureResult(ex);
-            }
-
-            return responseModel;
-        }
-
-        public async Task<Result<SetupResponseModel>> ExpireCode(string id)
-        {
-            Result<SetupResponseModel> responseModel;
-            try
-            {
-                var item = await _context.TblSetups.FindAsync(id);
-                if (item is null)
-                {
-                    responseModel = Result<SetupResponseModel>.NotFoundResult();
-                    goto result;
-                }
-
-                item.IsExpired = true;
-                _context.TblSetups.Update(item);
-                await _context.SaveChangesAsync();
-
-                responseModel = Result<SetupResponseModel>.SuccessResult();
-            }
-            catch (Exception ex)
-            {
-                responseModel = Result<SetupResponseModel>.FailureResult(ex);
+                responseModel = Result<SetupResponseModel>.NotFoundResult();
+                goto result;
             }
 
-        result:
-            return responseModel;
-        }
+            item.IsExpired = true;
+            _context.TblSetups.Update(item);
+            await _context.SaveChangesAsync();
 
-        private string GetSixRandomNumbers()
+            responseModel = Result<SetupResponseModel>.SuccessResult();
+        }
+        catch (Exception ex)
         {
-            Random r = new();
-            int randNum = r.Next(1000000);
-            string sixDigitNumber = randNum.ToString("D6");
-
-            return sixDigitNumber;
+            responseModel = Result<SetupResponseModel>.FailureResult(ex);
         }
 
-        private TblSetup GetTblSetup(string sixDigitNumber)
+    result:
+        return responseModel;
+    }
+
+    private string GetSixRandomNumbers()
+    {
+        Random r = new();
+        int randNum = r.Next(1000000);
+        string sixDigitNumber = randNum.ToString("D6");
+
+        return sixDigitNumber;
+    }
+
+    private TblSetup GetTblSetup(string sixDigitNumber)
+    {
+        return new TblSetup()
         {
-            return new TblSetup()
-            {
-                SetupCode = sixDigitNumber,
-                SetupId = Ulid.NewUlid().ToString(),
-                IsExpired = false
-            };
-        }
+            SetupCode = sixDigitNumber,
+            SetupId = Ulid.NewUlid().ToString(),
+            IsExpired = false
+        };
     }
 }

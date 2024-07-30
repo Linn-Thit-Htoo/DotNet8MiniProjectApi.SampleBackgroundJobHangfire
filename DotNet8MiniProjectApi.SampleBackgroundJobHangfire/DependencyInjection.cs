@@ -1,6 +1,4 @@
-﻿using DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Db.AppDbContexts;
-using DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Features.Setup;
-using Hangfire;
+﻿using DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Features.Setup;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
