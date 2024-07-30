@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35005.142
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8MiniProjectApi.SampleBackgroundJobHangfire", "DotNet8MiniProjectApi.SampleBackgroundJobHangfire\DotNet8MiniProjectApi.SampleBackgroundJobHangfire.csproj", "{2F682BFA-F4EF-4699-87F6-549AC354FBFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Db", "DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Db\DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Db.csproj", "{49A5920D-6F17-4158-A853-7F53C5AC4812}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Mapper", "DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Mapper\DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Mapper.csproj", "{CD8FE098-0238-4C7A-87E8-6682A67A04E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F682BFA-F4EF-4699-87F6-549AC354FBFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F682BFA-F4EF-4699-87F6-549AC354FBFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F682BFA-F4EF-4699-87F6-549AC354FBFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F682BFA-F4EF-4699-87F6-549AC354FBFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49A5920D-6F17-4158-A853-7F53C5AC4812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49A5920D-6F17-4158-A853-7F53C5AC4812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49A5920D-6F17-4158-A853-7F53C5AC4812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49A5920D-6F17-4158-A853-7F53C5AC4812}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD8FE098-0238-4C7A-87E8-6682A67A04E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD8FE098-0238-4C7A-87E8-6682A67A04E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD8FE098-0238-4C7A-87E8-6682A67A04E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD8FE098-0238-4C7A-87E8-6682A67A04E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76C2C92A-D903-4700-8CB9-BFB207B46DBC}
+	EndGlobalSection
+EndGlobal
