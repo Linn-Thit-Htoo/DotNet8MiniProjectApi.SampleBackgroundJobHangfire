@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Db.AppDbContexts;
+﻿namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Db.AppDbContexts;
 
 public partial class TblSetup
 {
