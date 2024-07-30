@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8MiniProjectApi.Sampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Db", "DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Db\DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Db.csproj", "{49A5920D-6F17-4158-A853-7F53C5AC4812}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Mapper", "DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Mapper\DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Mapper.csproj", "{CD8FE098-0238-4C7A-87E8-6682A67A04E5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{49A5920D-6F17-4158-A853-7F53C5AC4812}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49A5920D-6F17-4158-A853-7F53C5AC4812}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49A5920D-6F17-4158-A853-7F53C5AC4812}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CD8FE098-0238-4C7A-87E8-6682A67A04E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD8FE098-0238-4C7A-87E8-6682A67A04E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD8FE098-0238-4C7A-87E8-6682A67A04E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD8FE098-0238-4C7A-87E8-6682A67A04E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
