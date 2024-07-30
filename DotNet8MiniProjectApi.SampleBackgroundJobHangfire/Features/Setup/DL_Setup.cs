@@ -25,6 +25,7 @@ public class DL_Setup
             responseModel = Result<CreateSetupResponseModel>.SuccessResult(
                 new CreateSetupResponseModel { Code = sixDigitNumber }
             );
+
             BackgroundJob.Schedule<DL_Setup>(
                 x => x.ExpireCode(model.SetupId),
                 TimeSpan.FromMinutes(1)

@@ -1,16 +1,15 @@
-﻿namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Models.Enums
+﻿namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Models.Enums;
+
+public enum EnumStatusCode
 {
-    public enum EnumStatusCode
-    {
-        Success = 200,
-        Created = 201,
-        Accepted = 202,
-        BadRequest = 400,
-        UnAuthorized = 401,
-        NotFound = 404,
-        MethodNotAllowed = 405,
-        Conflict = 409,
-        Locked = 423,
-        InternalServerError = 500
-    }
+    Success = 200,
+    Created = 201,
+    Accepted = 202,
+    BadRequest = 400,
+    UnAuthorized = 401,
+    NotFound = 404,
+    MethodNotAllowed = 405,
+    Conflict = 409,
+    Locked = 423,
+    InternalServerError = 500
 }
