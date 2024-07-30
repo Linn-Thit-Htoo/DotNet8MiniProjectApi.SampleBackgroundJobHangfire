@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-
-namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Db.AppDbContexts;
+﻿namespace DotNet8MiniProjectApi.SampleBackgroundJobHangfire.Db.AppDbContexts;
 
 public partial class AppDbContext : DbContext
 {
