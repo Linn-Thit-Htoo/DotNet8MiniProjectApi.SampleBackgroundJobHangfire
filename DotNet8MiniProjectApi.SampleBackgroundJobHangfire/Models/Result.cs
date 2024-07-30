@@ -12,7 +12,7 @@ public class Result<T>
         string message = "Success.",
         EnumStatusCode statusCode = EnumStatusCode.Success
     ) =>
-        new Result<T>()
+        new()
         {
             Message = message,
             StatusCode = statusCode,
@@ -24,7 +24,7 @@ public class Result<T>
         string message = "Success.",
         EnumStatusCode statusCode = EnumStatusCode.Success
     ) =>
-        new Result<T>()
+        new()
         {
             Data = data,
             Message = message,
@@ -36,7 +36,7 @@ public class Result<T>
         string message = "Fail.",
         EnumStatusCode statusCode = EnumStatusCode.BadRequest
     ) =>
-        new Result<T>()
+        new()
         {
             Message = message,
             StatusCode = statusCode,
@@ -44,7 +44,7 @@ public class Result<T>
         };
 
     public static Result<T> FailureResult(Exception ex) =>
-        new Result<T>()
+        new()
         {
             Message = ex.ToString(),
             StatusCode = EnumStatusCode.InternalServerError,
@@ -52,7 +52,7 @@ public class Result<T>
         };
 
     public static Result<T> NotFoundResult(string message = "No Data Found.") =>
-        new Result<T>
+        new()
         {
             Message = message,
             IsSuccess = false,
